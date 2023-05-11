@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import HouseLayout from './HouseLayout';
+import { useEffect, useState } from 'react';
+
+// Inputx
+
+
+
+// var s, row, col;
 function App() {
+  const [row, setRow] = useState();
+  const [col, setCol] = useState();
+
+  const handleChangeRow = (e) => {
+    // 👇 Store the input value to local state
+    setRow(e.target.value);
+  };
+
+  const handleChangeCol = (e) => {
+    setCol(e.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text" onChange={handleChangeRow} value={row} placeholder='enter no. of rows' />
+      <br />
+      <input type="text" onChange={handleChangeCol} value={col} placeholder='enter no. of columns' />
+      <HouseLayout rows={row} cols={col} />
     </div>
   );
+
+
+
 }
+
 
 export default App;
